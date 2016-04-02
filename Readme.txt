@@ -13,4 +13,4 @@ After you have installed django and pyhton to your computer.
 5. Open browser and type '127.0.0.1:8000'
 6. You'll see the application running.
 
-Note: I don't have an update button that updates the value of the fine in the database.Instead after the fine and the book has been returned I store it's final value in the fine table. I have already talked to Prof. Chris Davis about this.
+Note: I don't have an update button that updates the value of the fine in the database.Instead after the fine and the book has been returned I store it's final value in the fine table. 
