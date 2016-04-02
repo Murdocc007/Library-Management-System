@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <div >
+    <a href="/" style="padding-left: 30px">Home</a><a href="{% url 'logout' %}" style="float:right;padding-right: 45px">Logout</a>
+    </div>
+<body>
+
+<div class="form-group col-md-offset-5">
+<form action="{% url 'userfine'  %}" method="post" enctype="multipart/form-data">{% csrf_token  %}
+        Enter the User's Card Number:<br>
+        <input type="text" name="Card_no"><br>
+        Enter the Book Isbn Id:<br>
+        <input type="text" name="user_id"><br>
+        Enter the User's Name:<br>
+        <input type="text" name="user_name">
+        <br/><br/>
+    <input type="submit" value="Search" class="btn btn-success" />
+    </form>
+    </div>
+
+
+    <table>
+    <tr><th class="col-md-2"> Book Name </th><th class="col-md-2"> Date Out </th>
+    <th class="col-md-2"> Borrower's Name</th> <th class="col-md-2"> Fine </th>
+    </tr>
+ {% for b,fine,borrow,borrowers in borrowedbooks %}
+
+     <tr>
+         <td class="col-md-2">{{ b.Title }}</td>
+        <td class="col-md-2">{{ borrow.Date_out }}</td>
+         <td class="col-md-2">{{ borrowers }}</td>
+        <td class="col-md-2">{{ fine }}</td>
+     <td class="col-md-2"><a href="{% url 'removefine' borrow.id %}">Submitted/Fine Paid?(Remove the entry)</a></td>
+
+     </tr>
+
+
+{% endfor %}
+</table>
+
+
+</body>
+</html>

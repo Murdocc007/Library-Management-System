@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+<a href="/" style="padding-left: 25px">Home</a><a href="{% url 'logout' %}" style="float: right;padding-right: 30px">Logout</a>
+<body>
+<div class="col-md-12 col-md-offset-3">
+<h2>
+{% if due_date%}
+    You'll have return the book back by {{ due_date }}<br/>
+    After that you'll be charged 25c/day as fine.
+{% else %} Sorry You have already loaned 3 books!<br/>Cannot loan more than that.
+{% endif %}
+</h2>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   {% load staticfiles %}
+    <meta charset="UTF-8">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+       <div >
+    <a href="/" style="padding-left: 30px">Home</a><a href="{% url 'logout' %}" style="float:right;padding-right: 45px">Logout</a>
+    </div>
+
+<body>
+
+
+
+
+{% if fine_book  %}
+<table border="0">
+<tr><th class="col-md-2"> Book Name </th>
+    <th class="col-md-2"> Date Out</th>
+    <th class="col-md-2"> Date Out</th>
+</tr>
+<tr>
+    {% for book,fine_book,fine in fine_books %}
+
+        <td class="col-md-2">{{ book.Title }}</td>
+    <td class="col-md-2">{{  fine_book.Date_out}}</td>
+    <td  class="col-md-2">{{ fine }}</td>
+</tr>
+        </table>
+{% endfor %}
+    {% else %} <h2>There are no fines associated with your account</h2>
+{% endif %}
+
+
+
+
+</body>
+</html>

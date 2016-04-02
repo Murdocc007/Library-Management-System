@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+<body>
+<div class="col-md-4 col-md-offset-4" style="margin-top: 50px">
+    <h2 class="form-signin-heading">Please sign in</h2>
+
+    <form action="{% url 'sign_in' %}" method="POST" class="form-signin" role="form" style="margin-top: 50px">{% csrf_token %}
+
+        <div class="input-group" >
+        {% if auth_form.non_field_errors %}<br/>
+                       <span  >{% for error in  auth_form.non_field_errors %}
+                           {{ error }}
+                       </span><br>
+                       {% endfor %}
+            {% endif %}
+
+        {% for field in auth_form %}
+                            {% if field.errors %}<br/>
+                <span class="red">{{ field.errors.as_text }} </span>
+                <br/>{% endif %}
+        {{ field }}
+
+        {% endfor %}
+        </div>
+        <button class="btn btn-primary btn-block form-group" style="align-items:center ;width: 79%;" type="submit">Sign in</button>
+            <a href="/" >New to the website?Create Account.</a>
+    </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+
+</head>
+<body>
+<div class="col-md-4 col-md-offset-4" style="margin-top: 36px">
+            <h2 class="form-signin-heading col-md-offset-1">Create an account</h2>
+ <form class="form-signin" role="form" action="{%  url 'sign_up' %}" method="POST">{% csrf_token %}
+
+            {% autoescape off %}
+                {% for field in user_form %}
+                <div class="form-group col-md-offset-2">
+                {% if field.errors %}
+                <span class="text-danger">{{ field.errors.as_text }} </span>
+                <br/>{% endif %}
+
+                <span>{{ field }}</span>
+                    </div>
+                {% endfor %}
+            {% endautoescape %}
+     <button class="btn btn-primary btn-block" style="align-items:center;width:79%" type="submit">Sign up</button>
+        </form>
+            <a href="/sign_in" class="col-md-offset-1">Already have a account?Click here</a>
+
+</div>
+</body>
+</html>
